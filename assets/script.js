@@ -1,5 +1,4 @@
-// JavaScript file for 04-Web-APIs-Challenge
-// Variables to access html elements
+
 let scores = document.querySelector("#scores");
 let timer = document.querySelector("#timer");
 let container = document.querySelector("#container");
@@ -8,7 +7,6 @@ let content = document.querySelector("#content");
 let start = document.querySelector("#start");
 let answer = document.querySelector("#answer");
 
-// Structure of questions
 class Question {
     constructor(question, options, answer) {
         this.question = question;
@@ -19,17 +17,17 @@ class Question {
 
 let questionList = [];
 
-// All Questions formatted and put into questionList array
-const options1 = ["1. boolean", "2. object", "3. number", "4. string"];
-const question1 = new Question("What data types can local storage accept?", options1, "4. string");
+// question structure
+const options1 = ["1. .JVS", "2. .JSC", "3. .JSCPT", "4. .JS"];
+const question1 = new Question("What is the correct abriviation for JavaScript?", options1, "4. .JS");
 questionList.push(question1);
 
-const options2 = ["1. string", "2. number", "3. boolean", "4. all of the above"];
-const question2 = new Question("What data types can a function return?", options2, "4. all of the above");
+const options2 = ["1. structure", "2. functionality", "3. nothing", "4. styling"];
+const question2 = new Question("What does css add?", options2, "4. styling");
 questionList.push(question2);
 
-const options3 = ["1. local variables", "2. css selectors", "3. functions", "4. names"];
-const question3 = new Question("What parameters can be passed into the query selector function?", options3, "2. css selectors");
+const options3 = ["1. Social Media", "2. Version Control", "3. Wasting Time", "4. Networking"];
+const question3 = new Question("What is GitHub used for?", options3, "2. Version Control");
 questionList.push(question3);
 
 const options4 = ["1. body", "2. canvas", "3. concept", "4. aside"];
@@ -44,7 +42,6 @@ const options6 = ["1. quotes", "2. curly braces", "3. parenthesis", "4. square b
 const question6 = new Question("What syntax wraps around strings?", options6, "1. quotes");
 questionList.push(question6);
 
-// Variables for question loop functions
 let optionList = [];
 let currentQues = 0;
 let score = 0;
@@ -56,7 +53,7 @@ let isClearingAnswer = false;
 let clearingAnswerCode = 0;
 let isCorrect = false;
 
-// Init function that makes view scores and start quiz clickable
+// makes score list and start quiz "clickable"
 function init() {
     start.addEventListener("click", questionLoop);
     scores.addEventListener("click", showScores);
@@ -78,14 +75,14 @@ function questionLoop () {
     nextQuestion();
 }
 
-// Counts down the timer and ends the quiz if time is zero
+// count down timer
 function runTimer () {
     let clock = setInterval(function() {
         timeLeft--;
-        timer.textContent = `Time: ${timeLeft} seconds`;
+        timer.textContent = `Time: ${timeLeft} s`;
         if(timeLeft === 0) {
             clearInterval(clock);
-            if(title.textContent !== "All Done.") {
+            if(title.textContent !== "Finished.") {
                 endOfQuiz();
             }
         }
@@ -93,8 +90,7 @@ function runTimer () {
 }
 
 
-// Checks if you are the last question
-// Either goes to next question or end of quiz
+//checks if youre on the lasr question, if not go to the next, if are complete test
 function nextQuestion(event) {
     writeAnswer(event);
     if(currentQues < questionList.length) {
